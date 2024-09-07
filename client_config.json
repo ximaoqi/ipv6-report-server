@@ -1,0 +1,11 @@
+{
+    "pcode":"c065f22688219503a796b275b355ce87",
+    "server":"10.0.0.100",
+    "port":10000,
+    "name":"test",
+    "note":"test",
+    "reportlog": "report_ipv6.log",
+    "getlog": "get_ipv6.log",
+    "isp": "CHINATELECOM",
+    "net_timeout" : 60
+}
