@@ -1,0 +1,11 @@
+{
+    "pcode":"c065f22688219503a796b275b355ce87",
+    "server":"10.0.0.100",
+    "port":10000,
+    "logfile": "report_ipv6_server.log",
+    "savefile": "save.json",
+    "crefile": "server.crt",
+    "keyfile": "server.key",
+    "listen": 60 ,
+    "net_timeout" : 60
+}
