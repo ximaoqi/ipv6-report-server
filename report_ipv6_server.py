@@ -149,6 +149,8 @@ def main() :
             continue
         except ConnectionResetError :
             log.error("Wrong connection reset.")
+        except :
+            log.error("Wrong connection.")
             continue
 
         ss_client.settimeout(timeout)
