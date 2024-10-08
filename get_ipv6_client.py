@@ -1,9 +1,11 @@
 import socket
 import ssl
 import json
+import time
 
 import check_parameter
 import simplelog
+
 
 
 def main() :
@@ -76,14 +78,17 @@ def main() :
     log.info("Start verifing pcode")
     client_ss = ReportClient(ss)
     if client_ss.verifyPcode(pcode, name) != 0 :
+        client_ss.close()
         log.critical(client_ss.rinfo + " rcode :" + str(client_ss.rcode))
 
     if client_ss.getInfo(name) != 0 :
+        client_ss.close()
         log.critical(client_ss.rinfo + " rcode :" + str(client_ss.rcode))
 
 
     log.info("Get IPv6 information completed.")
     client_ss.close()
+    time.sleep(5)
     input("Press enter key to close.")
     return 0
 

@@ -2,6 +2,7 @@ import socket
 import ssl
 import json
 import platform
+import time
 
 import check_parameter
 import get_v6_address
@@ -95,13 +96,16 @@ def main() :
     log.info("Start verifing pcode")
     client_ss = ReportClient(ss)
     if client_ss.verifyPcode(pcode, name) != 0 :
+        client_ss.close()
         log.critical(client_ss.rinfo + " rcode :" + str(client_ss.rcode))
 
     if client_ss.reportInfo(net, name, note) != 0 :
+        client_ss.close()
         log.critical(client_ss.rinfo + " rcode :" + str(client_ss.rcode))
 
     log.info("Report completed.")
     client_ss.close()
+    time.sleep(5)
     return 0
 
 

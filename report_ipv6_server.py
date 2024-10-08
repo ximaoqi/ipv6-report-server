@@ -4,6 +4,7 @@ import ssl
 import json
 import threading
 import atexit
+import time
 
 #customer lib
 import simplelog
@@ -286,6 +287,8 @@ class ServerThreading(threading.Thread) :
         if self.__verifyPcode() == -1 :
             self.__ssocket.close()
             self.__log_handle.fflush()
+            time.sleep(5)
+            
             return -1
         
         op_status = self.__Op()
@@ -296,6 +299,7 @@ class ServerThreading(threading.Thread) :
         
         self.__ssocket.close()
         self.__log_handle.fflush()
+        time.sleep(5)
 
         self.__completed()
         if (simplelog.getNowNs() % 5 == 0) or self.__errflag :
@@ -309,6 +313,7 @@ class ServerThreading(threading.Thread) :
         #global REPROT_DICT
         #print(REPROT_DICT)
         #print("The dict len is {}.".format(len(REPROT_DICT)))
+        
         return 0 
     
 class JoinDemon(threading.Thread) :
