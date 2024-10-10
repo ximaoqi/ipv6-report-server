@@ -150,11 +150,19 @@ def main() :
             continue
         except ConnectionResetError :
             log.error("Wrong connection reset.")
+            continue
         except :
             log.error("Wrong connection.")
             continue
-
-        ss_client.settimeout(timeout)
+        
+        try :
+            ss_client.settimeout(timeout)
+        except OSError :
+            log.error("Set timeout report OSError.")
+            continue
+        except :
+            log.error("Set timeout report a error.")
+            continue
         server_thread = ServerThreading(ss_client, log)
 
         #add server thread to global queue list
